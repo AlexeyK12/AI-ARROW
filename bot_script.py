@@ -20,12 +20,12 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 # список доступных команд
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
-        "/study_topic <тема> - Изучение новых тем\n"
-        "/generate_ideas <контекст> - Формирование идей\n"
-        "/write_code <описание> - Писание кода\n"
-        "/defend_project <вопрос> - Защита проекта\n"
-        "/plan_work <описание> - Планирование работы команды\n"
-        "/assign_tasks <описание> - Распределение задач"
+        '/study_topic <тема> - Изучение новых тем\n'
+        '/generate_ideas <контекст> - Формирование идей\n'
+        '/write_code <описание> - Писание кода\n'
+        '/defend_project <вопрос> - Защита проекта\n'
+        '/plan_work <описание> - Планирование работы команды\n'
+        '/assign_tasks <описание> - Распределение задач'
     )
 
 # информация по заданной теме 
