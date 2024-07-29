@@ -31,37 +31,37 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 # информация по заданной теме 
 async def study_topic(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     topic = ' '.join(context.args)  
-    response = await generate_response(f"Предоставь информацию по теме: {topic}")
+    response = await generate_response(f'Предоставь информацию по теме: {topic}')
     await update.message.reply_text(response)
 
 # генерация идей на основе заданного контекста
 async def generate_ideas(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     context_text = ' '.join(context.args)  
-    response = await generate_response(f"Сгенерируй идеи на основе контекста: {context_text}")
+    response = await generate_response(f'Сгенерируй идеи на основе контекста: {context_text}')
     await update.message.reply_text(response)
 
 # код на основе описания
 async def write_code(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     description = ' '.join(context.args)  
-    response = await generate_response(f"Напиши код по следующему описанию: {description}")
+    response = await generate_response(f'Напиши код по следующему описанию: {description}')
     await update.message.reply_text(response)
 
 # ответ на вопрос для защиты проекта
 async def defend_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     question = ' '.join(context.args)  
-    response = await generate_response(f"Ответь на вопрос для защиты проекта: {question}")
+    response = await generate_response(f'Ответь на вопрос для защиты проекта: {question}')
     await update.message.reply_text(response)
 
 # план работы команды
 async def plan_work(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     description = ' '.join(context.args)  
-    response = await generate_response(f"Создай план работы команды на основе следующего описания: {description}")
+    response = await generate_response(f'Создай план работы команды на основе следующего описания: {description}')
     await update.message.reply_text(response)
 
 # распределение задач среди членов команды
 async def assign_tasks(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     description = ' '.join(context.args)  # собираем описание из аргументов команды
-    response = await generate_response(f"Распредели задачи среди членов команды на основе следующего описания: {description}")
+    response = await generate_response(f'Распредели задачи среди членов команды на основе следующего описания: {description}')
     await update.message.reply_text(response)
 
 # функция для запроса к API и получения ответа
@@ -93,7 +93,7 @@ async def main() -> None:
     # инициализация и запуск приложения
     await application.initialize()  
     await application.start()  
-    print("Bot is running...")  
+    print('Бот запущен...')  
     await application.updater.start_polling()  
     while True:
         await asyncio.sleep(1)  
