@@ -1,14 +1,14 @@
 import os
-import openai
 import asyncio
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from dotenv import load_dotenv
-
+from openai import Client
 
 load_dotenv()
 TOKEN = os.getenv('TELEGRAM_TOKEN')
-openai.api_key = os.getenv('OPENAI_API_KEY')
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+client = Client(api_key=OPENAI_API_KEY)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text('Привет! Я ваш ассистент для хакатона.')
@@ -55,15 +55,14 @@ async def assign_tasks(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 async def generate_response(prompt):
     try:
-        response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=150
+        # Запрос к OpenAI API с использованием нового метода
+        response = client.chat.completions.create(
+            model='gpt-3.5-turbo',
+            messages=[{'role': 'user', 'content': prompt}],
+            max_tokens=750
         )
         return response.choices[0].message['content'].strip()
-    except openai.OpenAIError as e:
+    except Exception as e:
         return f"Ошибка API OpenAI: {e}"
 
 async def main() -> None:
