@@ -15,7 +15,7 @@ client = Client(api_key=OPENAI_API_KEY)
 
 # приветственное сообщение пользователю
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text('Привет! Я ваш ассистент для хакатона.')
+    await update.message.reply_text('Привет! Я твой ассистент для хакатона')
 
 # список доступных команд
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -42,6 +42,7 @@ async def generate_ideas(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 # код на основе описания
 async def write_code(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    # описание из аргументов
     description = ' '.join(context.args)  
     response = await generate_response(f'Напиши код по следующему описанию: {description}')
     await update.message.reply_text(response)
@@ -54,14 +55,16 @@ async def defend_project(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 
 # план работы команды
 async def plan_work(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    # описание из аргументов
     description = ' '.join(context.args)  
-    response = await generate_response(f'Создай план работы команды на основе следующего описания: {description}')
+    response = await generate_response(f'Создай план работы команды на основе описания: {description}')
     await update.message.reply_text(response)
 
 # распределение задач среди членов команды
 async def assign_tasks(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    description = ' '.join(context.args)  # собираем описание из аргументов команды
-    response = await generate_response(f'Распредели задачи среди членов команды на основе следующего описания: {description}')
+    # описание из аргументов
+    description = ' '.join(context.args)  
+    response = await generate_response(f'Распредели задачи среди членов команды на основе описания: {description}')
     await update.message.reply_text(response)
 
 # функция для запроса к API и получения ответа
@@ -106,7 +109,8 @@ if __name__ == '__main__':
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
     if loop.is_running():
-        print('Асинхронный цикл обработки событий уже запущен. Добавление сопрограммы в цикл обработки событий')
+        print('Асинхронный цикл обработки событий УЖЕ запущен. Добавление сопрограммы в цикл обработки событий')
+        
         # запускаем основной процесс бота
         task = loop.create_task(main())
     else:
