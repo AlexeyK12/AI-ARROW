@@ -13,11 +13,11 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 # клиент для взаимодействия с API
 client = Client(api_key=OPENAI_API_KEY)
 
-# приветственное сообщение пользователю
+# приветствие при запуске/старте
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text('Привет! Я твой ассистент для хакатона')
 
-# список доступных команд
+# доступные команд - /help
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
         '/study_topic <тема> - Изучение новых тем\n'
@@ -83,7 +83,7 @@ async def generate_response(prompt):
 async def main() -> None:
     application = ApplicationBuilder().token(TOKEN).build()  
 
-    # добавляем обработчики команд
+    # обработчики команд
     application.add_handler(CommandHandler('start', start))
     application.add_handler(CommandHandler('help', help_command))
     application.add_handler(CommandHandler('study_topic', study_topic))
@@ -101,7 +101,7 @@ async def main() -> None:
     while True:
         await asyncio.sleep(1)  
 
-# проверяем, есть ли запущенный асинхронный цикл событий
+# проверяем, есть ли запущенный асинхронный цикл событий!!!
 if __name__ == '__main__':
     try:
         loop = asyncio.get_running_loop()
