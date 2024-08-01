@@ -35,7 +35,7 @@ async def initial_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         [InlineKeyboardButton('ЗАПУСТИТЬ', callback_data='start_and_help')]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await context.bot.send_message(chat_id=update.effective_chat.id, text='Добро пожаловать!!! Нажмите кнопку, чтобы начать', reply_markup=reply_markup)
+    await context.bot.send_message(chat_id=update.effective_chat.id, text='Добро пожаловать!!! Нажми кнопку, чтобы начать', reply_markup=reply_markup)
 
 # обработчик нажатий на кнопки
 async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
