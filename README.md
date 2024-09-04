@@ -36,4 +36,6 @@
 
 Создание и настройка Telegram-бота, добавление обработчиков команд и запуск цикла прослушивания сообщений. Если асинхронный цикл уже запущен, добавляется корутина в существующий цикл; в противном случае создается новый цикл.
 
-![Image](https://github.com/AlexeyK12/Diplomas-and-certificates/blob/main/AI-ARROW.pdf)
+[Посмотреть PDF](https://github.com/AlexeyK12/Diplomas-and-certificates/blob/main/AI-ARROW.pdf)
+
+
